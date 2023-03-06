@@ -6,3 +6,6 @@ Esse mesmo sistema ainda será implementado as rotas a serem usadas para que as 
 
 ## Diagrama de contexto da API
 ![C4](./diagrama/img/diagrama_01_c4.png)
+
+## Diagrama de container
+![C4](./diagrama/img/diagrama_container.png)

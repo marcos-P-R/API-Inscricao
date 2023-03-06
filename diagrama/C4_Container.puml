@@ -1,0 +1,23 @@
+@startuml api-cadastro
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+
+
+!include <C4/C4_Container>
+!include FONTAWESOME/users.puml
+!include DEVICONS/angular.puml
+!include DEVICONS/nodejs.puml
+!include DEVICONS/postgresql.puml
+
+Person(personClient,"Time de cadastro", "Time de cadastro da banca de concurso", $sprite="users")
+Container(frontEnd_adm, "Front end", "Angular", "Painel de cadastro dos concursos", $sprite="angular")
+Container(web_app, "API", "Node.js, Typescript, Express", "Responsavel pela regra de negocio", $sprite="nodejs")
+
+ContainerDb(bancodeDados, "Banco de dados", "Postgres", "Os dados referentes os concursos serão persistidos em um banco relacional", $sprite="postgresql")
+
+Rel(personClient, frontEnd_adm, "Cadastra, edita, verifica, atualiza e fechar o concurso")
+Rel(frontEnd_adm, web_app, "Solicitações das operações do time de cadastro", "HTTP")
+Rel_U(web_app, frontEnd_adm,  "Respostas das Solicitações das operações do time de cadastro", "HTTP")
+Rel_R(web_app, bancodeDados, "Persiste os dados das solicitações do cliente através de um ORM e solicita algumas operações", "TypeORM")
+Rel_L(bancodeDados, web_app, "Retorna os resultados das operações solicitadas", "TypeORM")
+@enduml
