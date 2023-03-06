@@ -1,0 +1,12 @@
+@startuml api-cadastro
+!include <C4/C4_Container>
+
+Person(personClient, "Cadastro de Concursos", "Time de cadastro da banca de concurso")
+
+Container(web_app, "Web Application", "Software system", "Executa as solicitações pedidas pelo cliente quando solicitadas corretamente, informando ao Banco")
+
+ContainerDb(bancodeDados, "Banco de dados", "Postgres", "Os dados referentes os concursos serão persistidos em um banco relacional")
+
+Rel(personClient, web_app, "Cadastra, edita, verifica, atualiza e fechar o concurso")
+Rel_R(web_app, bancodeDados, "Persiste os dados das solicitações do cliente")
+@enduml
